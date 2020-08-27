@@ -1,55 +1,29 @@
 import React, { Component } from 'react';
 //app.css의 디자인을 app component에 넣는다.
 import './App.css';
-
-class Subject extends Component {
-  render() {
-    return (
-
-      <header>
-        <h1> web</h1>
-        world wide web
-      </header>
-
-    )
-  }
-}
+import Toc from './components/TOC'
+import Subject from './components/Content'
 
 
-class Toc extends Component {
-  render() {
-    return (
-      <nav>
-        <ul>
-          <li><a href="1.html">HTML</a></li>
-          <li><a href="2.html">CSS</a></li>
-          <li><a href="3.html">JavaScript</a></li>
-        </ul>
-      </nav>
-    )
-  }
-}
-
-
-class Shopping extends Component {
-  render() {
-    return (
-      <header>
-
-        <button class="btn colorBtn blue" data-key="color" data-value="blue">Blue</button>
-        <button class="btn colorBtn yellow" data-key="color" data-value="yellow">Yellow</button>
-        <button class="btn colorBtn pink" data-key="color" data-value="pink">Pink</button>
-
-      </header>
-    )
-  }
-}
-
+//어떤 컴포넌트가 실행될때 render()보다 먼저 실행이되면서 그 컴포넌트를 초기화 하고싶은 코드는
+//constructor 안에다가 코드를 작성한다. 즉 컴포넌트가 실행될떄 constructor가 제일 먼저 실행되면서 초기화를 담당한다.
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      subject: { title: 'web', sub: 'world wide web' }
+    }
+  }
   render() {
     return (
       <div className='App'>
-        <Shopping></Shopping>
+        <Subject
+          title={this.state.subject.title}
+          sub={this.state.subject.sub}
+        >
+        </Subject>
+        <Subject title="react" sub="for ui"></Subject>
+        <Toc></Toc>
       </div>
     );
   }
