@@ -1,2 +1,2 @@
 # lifecoding_react
-react
+react props / state 연습본
